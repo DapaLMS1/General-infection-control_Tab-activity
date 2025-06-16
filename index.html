@@ -1,195 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infection Control Essentials</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Custom Tailwind Color Configuration */
-        :root {
-            --color-dark-purple: #532A8C;
-            --color-medium-purple: #9D8ABB;
-            --color-green-accent: #7ABF49;
-            --color-light-green: #96BF78;
-            --color-light-grey: #F2F2F2;
-            --color-light-purple: #C3ACE8;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infection Control Essentials</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-dark-purple: #532A8C;
+      --color-medium-purple: #9D8ABB;
+      --color-green-accent: #7ABF49;
+      --color-light-green: #96BF78;
+      --color-light-grey: #F2F2F2;
+      --color-light-purple: #C3ACE8;
+    }
 
-        .bg-dark-purple { background-color: var(--color-dark-purple); }
-        .text-dark-purple { color: var(--color-dark-purple); }
-        .border-dark-purple { border-color: var(--color-dark-purple); }
+    body {
+      font-family: "Open Sans", sans-serif;
+      background-color: var(--color-light-grey);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-        .bg-medium-purple { background-color: var(--color-medium-purple); }
-        .text-medium-purple { color: var(--color-medium-purple); }
+    .activity-container {
+      width: 622px;
+      height: 600px;
+      background-color: var(--color-light-grey);
+      display: flex;
+      flex-direction: column;
+    }
 
-        .bg-green-accent { background-color: var(--color-green-accent); }
-        .text-green-accent { color: var(--color-green-accent); }
+    .tab-content-container {
+      flex-grow: 1;
+      overflow-y: auto;
+    }
 
-        .bg-light-green { background-color: var(--color-light-green); }
-        .text-light-green { color: var(--color-light-green); }
+    .tab-button.active {
+      background-color: var(--color-dark-purple);
+      color: var(--color-light-grey);
+      border-bottom: 4px solid var(--color-green-accent);
+    }
 
-        .bg-light-grey { background-color: var(--color-light-grey); }
-        .text-light-grey { color: var(--color-light-grey); }
+    .tab-button {
+      background-color: var(--color-medium-purple);
+      color: var(--color-dark-purple);
+      border-bottom: 4px solid transparent;
+      transition: all 0.3s ease;
+    }
 
-        .bg-light-purple { background-color: var(--color-light-purple); }
-        .text-light-purple { color: var(--color-light-purple); }
+    .tab-button:hover:not(.active) {
+      background-color: var(--color-light-purple);
+    }
 
-        /* General styles */
-        body {
-            font-family: "Open Sans", sans-serif;
-            background-color: var(--color-light-grey);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    .tab-content {
+      display: none;
+    }
 
-        /* Container specific sizing and background */
-        .activity-container {
-            width: 622px;
-            height: 600px;
-            background-color: var(--color-light-grey); /* Light grey background for the container */
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Tab content to allow scrolling if content exceeds height */
-        .tab-content-container {
-            flex-grow: 1; /* Allow it to take up remaining space */
-            overflow-y: auto; /* Enable vertical scrolling */
-        }
-
-        /* Active tab styling */
-        .tab-button.active {
-            background-color: var(--color-dark-purple);
-            color: var(--color-light-grey);
-            border-bottom: 4px solid var(--color-green-accent);
-        }
-
-        /* Inactive tab styling */
-        .tab-button {
-            background-color: var(--color-medium-purple);
-            color: var(--color-dark-purple);
-            border-bottom: 4px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .tab-button:hover:not(.active) {
-            background-color: var(--color-light-purple);
-            color: var(--color-dark-purple);
-        }
-
-        /* Hide inactive content */
-        .tab-content {
-            display: none;
-        }
-
-        /* Show active content */
-        .tab-content.active {
-            display: block;
-        }
-    </style>
+    .tab-content.active {
+      display: block;
+    }
+  </style>
 </head>
+
 <body class="p-4 sm:p-6 md:p-8">
-    <div class="activity-container mx-auto shadow-xl rounded-lg overflow-hidden">
-        <div class="tab-buttons flex justify-center items-stretch border-b-4 border-dark-purple">
-            <button class="tab-button active flex-1 p-4 sm:px-6 sm:py-4 rounded-tl-lg focus:outline-none flex items-center justify-center text-center font-bold text-lg md:text-xl relative overflow-hidden" data-tab="hand-hygiene">
-                <img src="hand_hygiene.png" onerror="this.onerror=null;this.src='https://placehold.co/150x150/9D8ABB/F2F2F2?text=Hand%20Hygiene';" alt="Hand Hygiene Icon" class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-full mr-2 sm:mr-4 flex-shrink-0">
-                <span class="z-10">Hand Hygiene</span>
-            </button>
-            <button class="tab-button flex-1 p-4 sm:px-6 sm:py-4 rounded-tr-lg focus:outline-none flex items-center justify-center text-center font-bold text-lg md:text-xl relative overflow-hidden" data-tab="ppe">
-                <img src="ppe.png" onerror="this.onerror=null;this.src='https://placehold.co/150x150/9D8ABB/F2F2F2?text=PPE';" alt="PPE Icon" class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-cover rounded-full mr-2 sm:mr-4 flex-shrink-0">
-                <span class="z-10">Personal Protective Equipment (PPE)</span>
-            </button>
-        </div>
-
-        <div class="tab-content-container p-6 sm:p-8 md:p-10 bg-light-grey text-dark-purple">
-            <div id="hand-hygiene" class="tab-content active rounded-lg">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-dark-purple">Hand Hygiene</h2>
-                <ul class="list-disc list-inside space-y-2 pl-4 text-dark-purple leading-relaxed">
-                    <li>**Handwashing** is the most important infection control measure.</li>
-                    <li>Wash hands after touching blood, body fluids, or contaminated items, and after removing gloves.</li>
-                    <li>Use soap and water or alcohol-based hand rubs.</li>
-                    <li>Keep fingernails short and clean. Avoid artificial nails, nail polish, and jewellery.</li>
-                    <li>Dry hands with single-use paper towels.</li>
-                    <li>**Wash hands:**
-                        <ul class="list-circle list-inside space-y-1 pl-6 mt-1">
-                            <li>Before and after treating each patient.</li>
-                            <li>Before starting and after finishing work.</li>
-                            <li>After using the restroom or handling contaminated items.</li>
-                        </ul>
-                    </li>
-                </ul>
-                <h3 class="text-xl sm:text-2xl font-semibold mt-6 mb-3 text-dark-purple">Hand Care</h3>
-                <ul class="list-disc list-inside space-y-2 pl-4 text-dark-purple leading-relaxed">
-                    <li>Cover cuts and abrasions with waterproof dressings.</li>
-                    <li>Use non-oil-based moisturisers.</li>
-                </ul>
-            </div>
-
-            <div id="ppe" class="tab-content rounded-lg">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 text-dark-purple">Personal Protective Equipment (PPE)</h2>
-                <ul class="list-disc list-inside space-y-2 pl-4 text-dark-purple leading-relaxed">
-                    <li>Provide and use appropriate **PPE**:
-                        <ul class="list-circle list-inside space-y-1 pl-6 mt-1">
-                            <li>Gloves (appropriate type for the procedure).</li>
-                            <li>Eye protection (goggles or face shields).</li>
-                            <li>Masks.</li>
-                            <li>Fluid-resistant gowns or aprons.</li>
-                        </ul>
-                    </li>
-                    <li>Use appropriate footwear.</li>
-                    <li>Change gloves between patients and when damaged.</li>
-                    <li>Never reuse disposable PPE.</li>
-                    <li>**Latex Allergy**:
-                        <ul class="list-circle list-inside space-y-1 pl-6 mt-1">
-                            <li>Be aware of latex allergy symptoms.</li>
-                            <li>Provide latex-free alternatives.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <div class="activity-container mx-auto shadow-xl rounded-lg overflow-hidden">
+    <div class="tab-buttons flex justify-center items-stretch border-b-4" style="border-color: var(--color-dark-purple);">
+      <button class="tab-button active flex-1 p-4 rounded-tl-lg focus:outline-none flex items-center justify-center font-bold text-lg md:text-xl" data-tab="hand-hygiene">
+        <img src="https://raw.githubusercontent.com/DapaLMS1/General-infection-control_Tab-activity/main/Hand-hygiene.png"
+          onerror="this.onerror=null;this.src='https://placehold.co/150x150/9D8ABB/F2F2F2?text=Hand%20Hygiene';"
+          alt="Hand Hygiene Icon"
+          class="w-16 h-16 md:w-24 md:h-24 object-cover rounded-full mr-3" />
+        <span class="z-10">Hand Hygiene</span>
+      </button>
+      <button class="tab-button flex-1 p-4 rounded-tr-lg focus:outline-none flex items-center justify-center font-bold text-lg md:text-xl" data-tab="ppe">
+        <img src="https://raw.githubusercontent.com/DapaLMS1/General-infection-control_Tab-activity/main/PPE.png"
+          onerror="this.onerror=null;this.src='https://placehold.co/150x150/9D8ABB/F2F2F2?text=PPE';"
+          alt="PPE Icon"
+          class="w-16 h-16 md:w-24 md:h-24 object-cover rounded-full mr-3" />
+        <span class="z-10">Personal Protective Equipment (PPE)</span>
+      </button>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
+    <div class="tab-content-container p-6 bg-light-grey text-dark-purple">
+      <div id="hand-hygiene" class="tab-content active">
+        <h2 class="text-2xl font-bold mb-4 text-dark-purple">Hand Hygiene</h2>
+        <ul class="list-disc list-inside space-y-2 pl-4 leading-relaxed text-dark-purple">
+          <li><strong>Handwashing</strong> is the most important infection control measure.</li>
+          <li>Wash hands after touching blood, body fluids, or contaminated items, and after removing gloves.</li>
+          <li>Use soap and water or alcohol-based hand rubs.</li>
+          <li>Keep fingernails short and clean. Avoid artificial nails, nail polish, and jewellery.</li>
+          <li>Dry hands with single-use paper towels.</li>
+          <li><strong>Wash hands:</strong>
+            <ul class="list-disc list-inside pl-6 mt-1">
+              <li>Before and after treating each patient.</li>
+              <li>Before starting and after finishing work.</li>
+              <li>After using the restroom or handling contaminated items.</li>
+            </ul>
+          </li>
+        </ul>
 
-            // Function to show a specific tab
-            function showTab(tabId) {
-                // Remove 'active' class from all buttons and content
-                tabButtons.forEach(button => button.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
+        <h3 class="text-xl font-semibold mt-6 mb-3 text-dark-purple">Hand Care</h3>
+        <ul class="list-disc list-inside space-y-2 pl-4 leading-relaxed text-dark-purple">
+          <li>Cover cuts and abrasions with waterproof dressings.</li>
+          <li>Use non-oil-based moisturisers.</li>
+        </ul>
+      </div>
 
-                // Add 'active' class to the clicked button and its corresponding content
-                const activeButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
-                const activeContent = document.getElementById(tabId);
+      <div id="ppe" class="tab-content">
+        <h2 class="text-2xl font-bold mb-4 text-dark-purple">Personal Protective Equipment (PPE)</h2>
+        <ul class="list-disc list-inside space-y-2 pl-4 leading-relaxed text-dark-purple">
+          <li>Provide and use appropriate <strong>PPE</strong>:
+            <ul class="list-disc list-inside pl-6 mt-1">
+              <li>Gloves (appropriate type for the procedure).</li>
+              <li>Eye protection (goggles or face shields).</li>
+              <li>Masks.</li>
+              <li>Fluid-resistant gowns or aprons.</li>
+            </ul>
+          </li>
+          <li>Use appropriate footwear.</li>
+          <li>Change gloves between patients and when damaged.</li>
+          <li>Never reuse disposable PPE.</li>
+          <li><strong>Latex Allergy:</strong>
+            <ul class="list-disc list-inside pl-6 mt-1">
+              <li>Be aware of latex allergy symptoms.</li>
+              <li>Provide latex-free alternatives.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-                if (activeButton) {
-                    activeButton.classList.add('active');
-                }
-                if (activeContent) {
-                    activeContent.classList.add('active');
-                }
-            }
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
 
-            // Add click event listeners to tab buttons
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const tabId = button.getAttribute('data-tab');
-                    showTab(tabId);
-                });
-            });
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tabId = button.getAttribute('data-tab');
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          tabContents.forEach(content => content.classList.remove('active'));
 
-            // Initially show the first tab
-            showTab('hand-hygiene');
+          button.classList.add('active');
+          document.getElementById(tabId).classList.add('active');
         });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
